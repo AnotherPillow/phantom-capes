@@ -47,7 +47,7 @@ def before_request():
 @app.route('/capes/<username>.png')
 def cape(username):
     if username in users:
-        return send_file(users[username]['url'])
+        return send_file(users[username]['cape']['url'])
     else:
         #send ALT_URL + '/capes/' + username + '.png' to client
         cape_url = ALT_URL + '/capes/' + username + '.png'
@@ -72,5 +72,9 @@ def submit():
         else:
             updateUsersFile(request.json['ign'], request.json['cape'])
             return jsonify({'success': 'Your cape has been set!'})
+# @app.route('/users/<username>')
+# def user(username):
+#     if username == 'PilBerry':
+
 if __name__ == '__main__':
     app.run(debug=True, port=80, host='127.0.0.1')
