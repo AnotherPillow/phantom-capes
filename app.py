@@ -1,9 +1,11 @@
 from flask import Flask, request, render_template, redirect, url_for, send_from_directory, jsonify, send_file
-import os,json,re
+import os,json,re,requests
 
 ALT_URL = 'http://ph.optifine.net'
+LUNAR_ALT_URL = 'http://ph.lunarclientcdn.com'
 #MAIN_URL = 'http://s.optifine.net'
 CAPE_REGEX = re.compile(r'http://s\.optifine\.net/capes/(.+)\.png')
+LUNAR_REGEX = re.compile(r'http://s-optifine\.lunarclientcdn\.com/capes/(.+)\.png')
 capes = os.listdir('cape_file')
 
 if not os.path.exists('users.json'):
@@ -13,6 +15,7 @@ if not os.path.exists('users.json'):
 
 usersFile = open('users.json', 'r')
 users = json.load(usersFile)
+
 
 
 def updateUsersFile(username,cape):
@@ -25,23 +28,32 @@ def updateUsersFile(username,cape):
     usersFile.write(json.dumps(users, indent=4))
     usersFile.close()
 
+def getCapeImage(url): 
+    response = requests.get(url)
+        # Check if the request was successful
+    if response.status_code == 200:
+            # If the request was successful, send the image data to the client
+        return response.content, 200, { 'Content-Type': 'image/png' }
+    else:
+            # If the request was unsuccessful, return an error response
+        return 'Error retrieving cape', 404
+
 app = Flask(__name__)
-
-
 @app.before_request
 def before_request():
     url = request.url
     print(url)
-    #check if it matches the regex
-    if re.match(CAPE_REGEX, url):
-        username = url.split('/')[-1].split('.')[0]
-        if username in users:
-            return send_file(users[username]['url'])
-        else:
-            #send ALT_URL + '/capes/' + username + '.png' to client
-            return redirect(ALT_URL + '/capes/' + username + '.png')
 
-            
+@app.route('/capes/<username>.png')
+def cape(username):
+    if username in users:
+        return send_file(users[username]['url'])
+    else:
+        #send ALT_URL + '/capes/' + username + '.png' to client
+        cape_url = ALT_URL + '/capes/' + username + '.png'
+        #send cape_url to client without redirecting
+        return getCapeImage(cape_url)
+
         
 
 @app.route('/')

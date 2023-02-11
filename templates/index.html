@@ -32,40 +32,40 @@
                 },
             {% endfor %}
         ]
-        const dropDown = _ => {
-            const dropDown = document.createElement('div');
-            dropDown.id = 'dropDown';
-            dropDown.style = 'position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.5);';
+        const capedropDown = _ => {
+            const capedropDown = document.createElement('div');
+            capedropDown.id = 'capedropDown';
+            capedropDown.style = 'position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.5);';
             
-            const dropDownContent = document.createElement('div');
-            dropDownContent.style = 'position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background-color: #191919; border: 1px solid rgb(124, 164, 45); border-radius: 5px; padding: 10px;';
+            const capedropDownContent = document.createElement('div');
+            capedropDownContent.style = 'position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background-color: #191919; border: 1px solid rgb(124, 164, 45); border-radius: 5px; padding: 10px;';
             
-            const dropDownContentText = document.createElement('p');
-            dropDownContentText.innerText = 'Choose a cape';
-            dropDownContent.appendChild(dropDownContentText);
+            const capedropDownContentText = document.createElement('p');
+            capedropDownContentText.innerText = 'Choose a cape';
+            capedropDownContent.appendChild(capedropDownContentText);
             
-            const dropDownContentCapes = document.createElement('div');
-            dropDownContentCapes.style = 'display: flex; flex-wrap: wrap; justify-content: center;';
+            const capedropDownContentCapes = document.createElement('div');
+            capedropDownContentCapes.style = 'display: flex; flex-wrap: wrap; justify-content: center;';
             for (let i = 0; i < capes.length; i++) {
-                const dropDownContentCapesCape = document.createElement('div');
-                dropDownContentCapesCape.style = 'width: 100px; height: 100px; background-color: rgb(124, 164, 45); border: 1px solid rgb(124, 164, 45); border-radius: 5px; margin: 5px;';
-                dropDownContentCapesCape.onclick = _ => {
-                    document.getElementById('dropDown').remove();
+                const capedropDownContentCapesCape = document.createElement('div');
+                capedropDownContentCapesCape.style = 'width: 100px; height: 100px; background-color: rgb(124, 164, 45); border: 1px solid rgb(124, 164, 45); border-radius: 5px; margin: 5px;';
+                capedropDownContentCapesCape.onclick = _ => {
+                    document.getElementById('capedropDown').remove();
                     document.getElementById('capeOuter').style = 'display: block;';
                     let capeNameEl = document.getElementById('capeName')
                     capeNameEl.innerText = capes[i].name;
                     capeNameEl.href = capes[i].path;
                     
                 }
-                const dropDownContentCapesCapeImage = document.createElement('img');
-                dropDownContentCapesCapeImage.src = capes[i].path;
-                dropDownContentCapesCape.appendChild(dropDownContentCapesCapeImage);
-                dropDownContentCapes.appendChild(dropDownContentCapesCape);
+                const capedropDownContentCapesCapeImage = document.createElement('img');
+                capedropDownContentCapesCapeImage.src = capes[i].path;
+                capedropDownContentCapesCape.appendChild(capedropDownContentCapesCapeImage);
+                capedropDownContentCapes.appendChild(capedropDownContentCapesCape);
             }
 
-            dropDownContent.appendChild(dropDownContentCapes);
-            dropDown.appendChild(dropDownContent);
-            document.body.appendChild(dropDown);
+            capedropDownContent.appendChild(capedropDownContentCapes);
+            capedropDown.appendChild(capedropDownContent);
+            document.body.appendChild(capedropDown);
         }
 
         const submitCape = _ => {
@@ -101,11 +101,11 @@
     <p>All you have to do with PhantomCapes running is play as normal via Optifine and you can get your capes!</p>
     <br>
     <label for="ign">IGN:</label>
-    <input type="text" id="ign" name="ign" placeholder="IGN (but have right case)">
+    <input type="text" id="ign" name="ign" placeholder="IGN (case-sensitive)">
     <!-- <p>Choose a file</p> -->
     <br>
     <br>
-    <button onclick="dropDown()">Select a cape</button>
+    <button onclick="capedropDown()">Select a cape</button>
     <br>
     <br>
     <input type="submit" value="Submit" name="submit" onclick="submitCape()">
