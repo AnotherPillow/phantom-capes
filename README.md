@@ -8,6 +8,7 @@ A custom Optifine cape server.
 - Download the latest release from the [releases page](https://github.com/anotherpillow/phantom-capes/releases)
 - Run the installer as an administrator.
 - Restart your computer or run `ipconfig /flushdns` in an administrator command prompt.
+- Run `py -m pip install -r requirements.txt` in the `server` folder.
 - Run app.py in the `server` folder.
 - Navigate to `s.optifine.net` in your browser.
 - Enter your IGN and choose a cape, then press `Submit`.
