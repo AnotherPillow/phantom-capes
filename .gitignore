@@ -1,3 +1,5 @@
 users.json
 rm.txt
 download_cosmetics.py
+phantom-installer/target
+phantom-installer/release_extra.py
