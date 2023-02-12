@@ -47,7 +47,7 @@ def before_request():
 @app.route('/capes/<username>.png')
 def cape(username):
     if username in users:
-        return send_file(users[username]['cape']['url'])
+        return send_file(users[username]['url'])
     else:
         #send ALT_URL + '/capes/' + username + '.png' to client
         cape_url = ALT_URL + '/capes/' + username + '.png'
