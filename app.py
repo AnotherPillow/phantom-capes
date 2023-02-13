@@ -59,9 +59,11 @@ def cape(username):
 @app.route('/')
 def index():
     return render_template('index.html', capes=[cape for cape in capes if cape.endswith('.png')])
+
 @app.route('/cape_file/<path:path>')
 def cape_file(path):
     return send_from_directory('cape_file', path)
+
 @app.route('/submit', methods=['POST'])
 def submit():
     if request.method == 'POST':
@@ -72,6 +74,11 @@ def submit():
         else:
             updateUsersFile(request.json['ign'], request.json['cape'])
             return jsonify({'success': 'Your cape has been set!'})
+
+@app.route('/public/<path:path>')
+def public(path):
+    return send_from_directory('public', path)
+
 # @app.route('/users/<username>')
 # def user(username):
 #     if username == 'PilBerry':
