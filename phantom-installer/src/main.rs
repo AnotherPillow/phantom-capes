@@ -20,7 +20,7 @@ fn main() {
     for line in lines_lines.into_iter() {
         if optifine_regex.is_match(line) {
             //remove it from lines
-            println!("Removing line: {}", line);
+            println!("Removing: {}", line);
             lines.retain(|&x| x != line);
         }
     }
