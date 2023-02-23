@@ -119,13 +119,13 @@ fn uninstall_phantom() {
 }
 
 fn run_phantom() {
+    println!("┋ Started Phantom!");
+    println!("┋ Access dashboard at http://s.optifine.net");
     let _output = Command::new("py")
         .arg("app.py")
         .current_dir(Path::new("server"))
         .output()
         .unwrap();
-    println!("┋ Started Phantom!");
-    println!("┋ Access dashboard at http://s.optifine.net");
 
     get_input(false);
     
