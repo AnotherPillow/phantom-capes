@@ -2,7 +2,6 @@ from flask import Flask, request, render_template, redirect, url_for, send_from_
 import os,json,re,requests
 
 ALT_URL = 'http://ph.optifine.net'
-LUNAR_ALT_URL = 'http://ph.lunarclientcdn.com'
 #MAIN_URL = 'http://s.optifine.net'
 CAPE_REGEX = re.compile(r'http://s\.optifine\.net/capes/(.+)\.png')
 LUNAR_REGEX = re.compile(r'http://s-optifine\.lunarclientcdn\.com/capes/(.+)\.png')
