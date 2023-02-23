@@ -2,6 +2,9 @@
 
 A custom Optifine cape server.
 
+![img](https://img.shields.io/github/release/anotherpillow/phantom-capes.svg)
+![img](https://img.shields.io/github/downloads/anotherpillow/phantom-capes/total.svg)
+
 ## Setup
 
 - Install [Python 3.8 or higher](https://www.python.org/downloads/)
