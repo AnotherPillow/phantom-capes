@@ -1,6 +1,6 @@
 # Deprecated!!
-Please use [Pine](ttps://github.com/anotherpillow/Pine)
-# Phantom Capes instead! 
+**Please use [Pine](https://github.com/anotherpillow/Pine) instead!**
+# Phantom Capes
 
 A custom Optifine cape server.
 
